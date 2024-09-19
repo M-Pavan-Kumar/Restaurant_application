@@ -1,4 +1,5 @@
 const express = require("express");
+
 require('dotenv').config()
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -87,8 +88,8 @@ app.use(cors({
 
 
 
-
-app.listen(3008, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("Server is running on port 3008");
 
   app.get("/", (req, res) => {
