@@ -8,7 +8,7 @@ import KitchenIcon from '@mui/icons-material/Kitchen';
 import ManIcon from '@mui/icons-material/Man';
 import Navbar from "../Components/Navbar"
 import Footer from "../Pages/Footer"
-
+import './About.css'; // Create this file for custom styles
 
 const restaurantInfo = {
     name: "Gourmet Haven",
@@ -30,53 +30,47 @@ const About = () => {
   return (
     <div>
         <Navbar />
-<div class="py-5 bg-body-secondary">
-      <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body d-flex">
-                            <img class="w-50 h-" src="https://i.pinimg.com/736x/68/10/28/68102834c7f1e06e3e2c2c1520be5559.jpg"></img>
-                        
-        
-                        <div>
-                            <h1 class="font-weight-bold ps-2">We Are More Than Multiple Service</h1>
-                            <p class="ps-2">This is a type of restaurant which typically serves food and drinks, in addition to light refreshments such as baked goods or snacks. The term comes from the rench word meaning food.
-                            </p>
-                            <div class="d-flex ps-2">
-                            <ul>
-                                <li><BookOnlineIcon/>Online Order</li>
-                                <li><SanitizerIcon/>Pre-Reservation</li>
-                                <li><AddAlarmIcon/>24/7 Service</li>
-
-                            </ul>
-                            <ul>
-                                <li><FoodBankIcon/>Oraganized Foodie Place</li>
-                                <li><KitchenIcon/>Clean Kitchen</li>
-                                <li><ManIcon/>Super Chefs</li>
-
-                            </ul>
-
-                            </div>
-                            <h3>Timings</h3>
-                            <ul className="list-unstyled ps-2">
-                {Object.entries(restaurantInfo.hours).map(([day, hours]) => (
-                    <li key={day}>
-                        <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong> {hours}
-                    </li>
-                ))}
-            </ul>
-                            <div class="ps-3">
-                            <button className="btn btn-danger w-50"> Enjoy Food!!</button>
+        <div className="py-5 bg-body-secondary">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-12">
+                        <div className="card">
+                            <div className="card-body d-flex flex-column flex-md-row">
+                                <img className="w-100 w-md-50 mb-3 mb-md-0" src="https://i.pinimg.com/736x/68/10/28/68102834c7f1e06e3e2c2c1520be5559.jpg" alt="Restaurant" />
+                                <div className="ps-0 ps-md-3">
+                                    <h1 className="font-weight-bold">We Are More Than Multiple Service</h1>
+                                    <p>This is a type of restaurant which typically serves food and drinks, in addition to light refreshments such as baked goods or snacks. The term comes from the French word meaning food.</p>
+                                    <div className="d-flex flex-column flex-md-row">
+                                        <ul className="list-unstyled me-md-4">
+                                            <li><BookOnlineIcon /> Online Order</li>
+                                            <li><SanitizerIcon /> Pre-Reservation</li>
+                                            <li><AddAlarmIcon /> 24/7 Service</li>
+                                        </ul>
+                                        <ul className="list-unstyled">
+                                            <li><FoodBankIcon /> Organized Foodie Place</li>
+                                            <li><KitchenIcon /> Clean Kitchen</li>
+                                            <li><ManIcon /> Super Chefs</li>
+                                        </ul>
+                                    </div>
+                                    <h3>Timings</h3>
+                                    <ul className="list-unstyled">
+                                        {Object.entries(restaurantInfo.hours).map(([day, hours]) => (
+                                            <li key={day}>
+                                                <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong> {hours}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="mt-3">
+                                        <button className="btn btn-danger w-100 w-md-50">Enjoy Food!!</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>                    
         </div>
-    </div>                    
-</div>
-<Footer/>
+        <Footer />
     </div>
     
   )

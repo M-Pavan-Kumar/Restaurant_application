@@ -16,10 +16,10 @@ const Contact = () => {
         </marquee>
       </div>
     <div className='amain'>
-    <div className='left col-4'>
-        <img className="cimg" src = "https://c4.wallpaperflare.com/wallpaper/97/355/812/food-india-indian-wallpaper-preview.jpg"/>
+    <div className='left col-12 col-md-4'>
+        <img className="cimg" src = "https://c4.wallpaperflare.com/wallpaper/97/355/812/food-india-indian-wallpaper-preview.jpg" alt="Indian Food"/>
     </div>
-    <div className='middle col-4'><div className="contact-container">
+    <div className='middle col-12 col-md-4'><div className="contact-container">
     <h2>Contact Us</h2>
     <div className="contact-details">
       <p>Address: 123 Foodie Street, Flavor Town, FL 12345</p>
@@ -50,8 +50,8 @@ const Contact = () => {
     </div>
   </div>
   </div>
-  <div className='right col-4 '>
-  <img className="cimg" src = "https://thumbs.dreamstime.com/z/idli-vada-sambar-three-traditional-popular-south-indian-vegetarian-breakfast-lunch-items-62957608.jpg"/>
+  <div className='right col-12 col-md-4 d-none d-md-block'>
+  <img className="cimg" src = "https://thumbs.dreamstime.com/z/idli-vada-sambar-three-traditional-popular-south-indian-vegetarian-breakfast-lunch-items-62957608.jpg" alt="South Indian Food"/>
   </div>
   </div>
   <div>

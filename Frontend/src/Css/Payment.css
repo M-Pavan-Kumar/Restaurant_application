@@ -80,3 +80,88 @@
   .payment-form button:hover {
     background-color: orange;
   }
+  
+  @media (max-width: 768px) {
+    .payment-container {
+        flex-direction: column;
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .summary, .payment-method {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .payment-form {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .payment-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .payment-summary h3 {
+        font-size: 18px;
+    }
+
+    .summary-item {
+        font-size: 14px;
+    }
+
+    .total {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-container {
+        padding: 5px;
+    }
+
+    .summary, .payment-method {
+        padding: 15px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .payment-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .payment-summary h3 {
+        font-size: 16px;
+    }
+
+    .summary-item {
+        font-size: 13px;
+    }
+
+    .total {
+        font-size: 15px;
+    }
+}

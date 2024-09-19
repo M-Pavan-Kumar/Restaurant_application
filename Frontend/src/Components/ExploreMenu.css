@@ -1,54 +1,85 @@
-.explore-menu{
+.explore-menu {
     padding-left: 15px;
-   display:flex;
-   flex-direction:column;
-   gap:20px;
-}
-.explore-menu h1{
-    color:#262626;
-    font-weight: 500;
-}
-.explore-menu-text{
-    margin-top: -20px;
-    max-width:60%;
-    color:#808080;
-}
-.explore-menu-list{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.explore-menu h1 {
+    color: #262626;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.explore-menu-text {
+    margin-top: -20px;
+    max-width: 100%;
+    color: #808080;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.explore-menu-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
     align-items: center;
-  
     text-align: center;
-    margin:20px 0px;
-   
+    margin: 20px 0px;
+    gap: 15px;
+    padding: 10px 0;
 }
-.explore-menu-list::-webkit-scrollbar{
-    display:none;
+
+.explore-menu-list::-webkit-scrollbar {
+    display: none;
 }
-.explore-menu-list-item img{
-   width: 100px;
-   height: 90px;
-    cursor:pointer;
+
+.explore-menu-list-item {
+    flex: 0 0 auto;
+}
+
+.explore-menu-list-item img {
+    width: clamp(80px, 15vw, 100px);
+    height: clamp(70px, 15vw, 90px);
+    cursor: pointer;
     border-radius: 50%;
     transition: 0.2s;
 }
-.explore-menu-list-item img:hover{
-    width: 110px;
-    height: 90px;
-     cursor:pointer;
-     border-radius: 50%;
-     border: 3px solid orange;
-     transition: 0.2s;
- }
-.explore-menu-list-item p{
-    margin-top: -5px;
-    color:#747474;
-    font-size:16px;
+
+.explore-menu-list-item img:hover {
+    width: clamp(90px, 16vw, 110px);
+    height: clamp(80px, 16vw, 100px);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid orange;
+    transition: 0.2s;
+}
+
+.explore-menu-list-item p {
+    margin-top: 5px;
+    color: #747474;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     cursor: pointer;
 }
-.explore-menu hr{
-   margin:0px 0px;
-   height:2px;
-   background-color: #e2e2e2;
-   border:none;
+
+.explore-menu hr {
+    margin: 0px 0px;
+    height: 2px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    .explore-menu {
+        padding-left: 10px;
+        gap: 15px;
+    }
+
+    .explore-menu-text {
+        margin-top: -15px;
+    }
+
+    .explore-menu-list {
+        margin: 15px 0px;
+    }
 }

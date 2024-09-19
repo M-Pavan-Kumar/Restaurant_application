@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import "./Navbar.css";
 import { BsCart2 } from 'react-icons/bs';
 import { HiOutlineBars3 } from 'react-icons/hi2';
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Modal, Typography, Button } from '@mui/material'; 
 import HomeIcon from '@mui/icons-material/Home';
-//import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import PersonIcon from '@mui/icons-material/Person';
 import logo from '../Images/logo.jpeg';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useCart } from "../Pages/CartContext"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [profileOpen, setProfileOpen] = useState(false); 
-  // const [cartItemsCount,setCartItemsCount]=useState(0);
   const { cart } = useCart();
   const cartItemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -29,18 +27,7 @@ const Navbar = () => {
     if (storedUser && storedUser.status === 'success') {
       setUser(storedUser.data);
     }
-    // const updateCartCount = () => {
-    //   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    //   setCartItemsCount(cartItems.length);
-    // };
-  
-    // updateCartCount(0); 
-    // window.addEventListener('storage', updateCartCount);
-    // return () => {
-    //   window.removeEventListener('storage', updateCartCount);
-    // };
   }, []);
-  // console.log(cartItemsCount)
 
   const login_data = JSON.parse(localStorage.getItem('login_data'));
 
@@ -48,7 +35,7 @@ const Navbar = () => {
     {
       text: 'Home',
       icon: <HomeIcon />,
-      link: '/home'
+      link: '/'
     },
     {
       text: 'About',
@@ -65,16 +52,15 @@ const Navbar = () => {
       icon: <PhoneRoundedIcon />,
       link: '/contactdetails'
     },
-    // {
-    //   text: 'Cart',
-    //   icon: <ShoppingCartRoundedIcon />,
-    //   link: '/shoppingcart'
-    // }
+    {
+      // text: 'Cart',
+      icon: <ShoppingCartRoundedIcon />,
+      link: '/shoppingcart'
+    }
   ];
 
   const handleLogout = () => {
     localStorage.removeItem('login_data');
-    // localStorage.removeItem('cart');
     setUser(null);
     window.location.replace('/');
   };
@@ -87,16 +73,13 @@ const Navbar = () => {
     setProfileOpen(false); 
   }
 
-
   return (
     <nav>
-      {/* <ToastContainer position="top-center" autoClose={2000} /> */}
       <div className='nav-logo-container'>
         <div className='d-flex'>
           <Link to="/"><img className='navbar-logo me-2' src={logo} alt='Logo' /></Link>
-            
-          <h2 className='nav-title me-2 mt-1'>Foodie</h2>
-          <RestaurantIcon style={{ height: '50px', width: '30px' }} />
+          <h2 className='nav-title me-2 mt-1'>Hi Foodie</h2>
+          <RestaurantIcon style={{ height: '50px', width: '25px' }} />
         </div>
       </div>
       <div className='navbar-links-container'>
@@ -105,13 +88,11 @@ const Navbar = () => {
         ))}
         
         <Link to="/shoppingcart">
-        
           <BsCart2 className='navbar-cart-icon' />
-          {cartItemsCount>0 && login_data &&(
+          {cartItemsCount > 0 && login_data && (
             <span className='cart-count'>{cartItemsCount}</span>
           )}
         </Link>
-        
         
         {user ? (
           <>
@@ -119,7 +100,7 @@ const Navbar = () => {
             <button onClick={handleLogout} className='logout-button'>
               <LogoutIcon />
             </button>
-            </>
+          </>
         ) : (
           <Link to="/signin">
             <button className='secondary-button'>Signin/Login</button>
@@ -139,36 +120,67 @@ const Navbar = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton component={Link} to={item.link}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>
             ))}
+            {user ? (
+              <>
+                <ListItem disablePadding>
+                  <ListItemButton onClick={handleProfileClick}>
+                    <ListItemIcon><PersonIcon /></ListItemIcon>
+                    <ListItemText primary="Profile" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton onClick={handleLogout}>
+                    <ListItemIcon><LogoutIcon /></ListItemIcon>
+                    <ListItemText primary="Logout" />
+                  </ListItemButton>
+                </ListItem>
+              </>
+            ) : (
+              <ListItem disablePadding>
+                <ListItemButton component={Link} to="/signin">
+                  <ListItemIcon><PersonIcon /></ListItemIcon>
+                  <ListItemText primary="Login/Register" />
+                </ListItemButton>
+              </ListItem>
+            )}
           </List>
         </Box>
       </Drawer>
       <Modal
-          open={profileOpen}
-          onClose={handleProfileClose}
-          aria-labelledby="profile-modal-title"
-          aria-describedby="profile-modal-description"
->
-  <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', boxShadow: 24, p: 4 }}>
-    <Typography id="profile-modal-title" variant="h6" component="h2">
-      Profile Details
-    </Typography>
-    <Typography id="profile-modal-description" sx={{ mt: 2 }}>
-      Username: {user?.username}
-      <br />
-      Email: {user?.email}
-    </Typography>
-    <Button className='primary' onClick={handleProfileClose} variant="contained" sx={{ mt: 2, bgcolor: 'skyblue', color: 'white', '&:hover': { bgcolor: 'deepskyblue' } }}>
-      Close
-    </Button>
-  </Box>
-</Modal>
-
+        open={profileOpen}
+        onClose={handleProfileClose}
+        aria-labelledby="profile-modal-title"
+        aria-describedby="profile-modal-description"
+      >
+        <Box sx={{ 
+          position: 'absolute', 
+          top: '50%', 
+          left: '50%', 
+          transform: 'translate(-50%, -50%)', 
+          width: { xs: '90%', sm: 400 }, 
+          bgcolor: 'background.paper', 
+          boxShadow: 24, 
+          p: 4 
+        }}>
+          <Typography id="profile-modal-title" variant="h6" component="h2">
+            Profile Details
+          </Typography>
+          <Typography id="profile-modal-description" sx={{ mt: 2 }}>
+            Username: {user?.username}
+            <br />
+            Email: {user?.email}
+          </Typography>
+          <Button className='primary' onClick={handleProfileClose} variant="contained" sx={{ mt: 2, bgcolor: 'skyblue', color: 'white', '&:hover': { bgcolor: 'deepskyblue' } }}>
+            Close
+          </Button>
+        </Box>
+      </Modal>
     </nav>
   );
 };

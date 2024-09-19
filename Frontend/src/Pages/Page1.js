@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Rating } from '@mui/material';
 import { useCart } from './CartContext';  // Importing the custom hook
 
-
+import '../Css/Page1.css'; 
 // Defininng a default image path
 const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800'; // Replace with the path to your default image
 

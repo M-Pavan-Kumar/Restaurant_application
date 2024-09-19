@@ -53,10 +53,10 @@ const Login = () => {
     };
 
     return (
-        <div className="lcontainer">
+        <div className="lcontainer container-fluid">
             <ToastContainer />
             <div className="row justify-content-center">
-                <div className="col-md-4">
+                <div className="col-12 col-md-6 col-lg-4">
                     <div className="card bg-transparent position-relative">
                         <div className="card-body">
                             <h2 className="card-title text-center text-white">Login</h2>

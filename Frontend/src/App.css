@@ -104,7 +104,7 @@ nav {
   width: 500px; 
   height: 500px; 
   object-fit: cover;
-  padding-right: 20px;
+  /* padding-right: 20px; */
   margin-right: 60px;
 }
 .home-text-section {

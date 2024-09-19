@@ -3,12 +3,14 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../Css/Addreview.css"
+import { useNavigate } from 'react-router-dom';
 
 const Addreview = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(1);
   const [photo, setPhoto] = useState('');
+  const navigate = useNavigate();
 
   // Retrieve userId from local storage
   const userId = JSON.parse(localStorage.getItem('login_data'))?.data?._id;
@@ -47,6 +49,10 @@ const Addreview = () => {
         setMessage('');
         setRating(1);
         setPhoto('');
+        // Redirect to reviews page after 2 seconds
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } else {
         toast.error(response.data.message || 'Failed to add review.');
       }
