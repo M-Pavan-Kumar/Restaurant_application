@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config()
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
@@ -7,7 +8,7 @@ const mongoose = require('mongoose');
 const Review=require("./Reviewmodel")
 
 // MongoDB Connection URI
-const uri = "mongodb+srv://Pavan:kumar123@cluster0.pfirt1o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.Mongo_Url;
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
