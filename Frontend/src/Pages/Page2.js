@@ -4,7 +4,7 @@ import { Rating } from '@mui/material';
 import { useCart } from './CartContext';  // Import the custom hook
 
 const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800';
-
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
 const Page2 = () => {
   const [items, setItems] = useState([]);
   const { addToCart } = useCart();  // Use the addToCart function
@@ -12,7 +12,7 @@ const Page2 = () => {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3008/chickentandoori');
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/chickentandoori`);
         if (response.data.status === 'success') {
           setItems(response.data.data);
         }

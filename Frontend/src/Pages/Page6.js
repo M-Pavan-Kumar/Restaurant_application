@@ -5,15 +5,15 @@ import { useCart } from './CartContext';
 
 // Define a default image path
 const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800'; // Replace with the path to your default image
-
-const Page2 = () => {
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+const Page6 = () => {
   const [items, setItems] = useState([]);
   const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3008/biryani');
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/biryani`);
         if (response.data.status === 'success') {
           console.log(response.data.data); 
           setItems(response.data.data); 
@@ -43,13 +43,13 @@ const Page2 = () => {
 
   return (
     <div className='container'>
-      <h4>POPULAR CHICKEN TANDOORI</h4>
+      <h4>POPULAR BIRYANI</h4>
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className='category d-flex mb-4'>
           {row.map((item, index) => (
             <div key={item._id} className='box shadow d-block'>
               {/* Use a fallback image if the image URL is empty */}
-              <div classname="image-containers">  
+              <div className="image-containers">  
 
               <img className='item-image'
                 src={item.image || DEFAULT_IMAGE_PATH}
@@ -78,4 +78,4 @@ const Page2 = () => {
   );
 };
 
-export default Page2;
+export default Page6;

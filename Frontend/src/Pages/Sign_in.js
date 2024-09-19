@@ -6,11 +6,10 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CgWindows } from 'react-icons/cg';
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
 
 const Sign_in = () => {
     const [username, setUsername] = useState('');
-    // const [firstname, setFirstname] = useState('');
-    // const [Lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
@@ -25,15 +24,13 @@ const Sign_in = () => {
         try {
             const data = {
                 username,
-                // firstname,
-                // lastname: Lastname,
                 email,
                 phone,
                 password,
                 address
             };
 
-            const response = await axios.post("http://localhost:3008/signin", data, {
+            const response = await axios.post(`${REACT_APP_BACKEND_URL}/signin`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -79,26 +76,6 @@ const Sign_in = () => {
                                     required
                                 />
                             </div>
-                            {/* <div className="form-group py-2">
-                                <label htmlFor="firstname">Your first name</label>
-                                <input
-                                    onChange={(event) => setFirstname(event.target.value)}
-                                    type="text"
-                                    className="form-control"
-                                    id="firstname"
-                                    placeholder="First name"
-                                />
-                            </div>
-                            <div className="form-group py-2">
-                                <label htmlFor="lastname">Your last name</label>
-                                <input
-                                    onChange={(event) => setLastname(event.target.value)}
-                                    type="text"
-                                    className="form-control"
-                                    id="lastname"
-                                    placeholder="Last name"
-                                />
-                            </div> */}
                             <div className="form-group py-2">
                                 <label htmlFor="email">Your Email</label>
                                 <input

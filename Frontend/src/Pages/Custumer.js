@@ -1,13 +1,10 @@
 
 import React from 'react';
 import '../Css/Custumer.css';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-
-
-
-
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
 
 const Custumer = () => {
   const [reviews, setReviews] = useState([]);
@@ -19,7 +16,7 @@ const Custumer = () => {
     // Function to fetch reviews from the backend
     const fetchReviews = async () => {
       try {
-        const response = await fetch('http://localhost:3008/reviews'); 
+        const response = await fetch(`${REACT_APP_BACKEND_URL}/reviews`);
         const data = await response.json();
 
         if (response.ok) {
@@ -72,4 +69,3 @@ const Custumer = () => {
 };
 
 export default Custumer;
-

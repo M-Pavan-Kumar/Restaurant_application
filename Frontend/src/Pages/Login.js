@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -24,7 +26,7 @@ const Login = () => {
         }
         try {
             setIsSubmitting(true);
-            const response = await axios.post("http://localhost:3008/login", {
+            const response = await axios.post(`${REACT_APP_BACKEND_URL}/login`, {
                 email: email,
                 password: password,
             }, {

@@ -11,9 +11,10 @@ import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import PersonIcon from '@mui/icons-material/Person';
 import logo from '../Images/logo.jpeg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useCart } from "../Pages/CartContext"
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false); 
   const { cart } = useCart();
   const cartItemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('login_data'));
@@ -59,10 +61,27 @@ const Navbar = () => {
     }
   ];
 
-  const handleLogout = () => {
-    localStorage.removeItem('login_data');
-    setUser(null);
-    window.location.replace('/');
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem('login_data');
+      setUser(null);
+      
+      const response = await fetch(`${REACT_APP_BACKEND_URL}/logout`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        navigate('/');  // This already navigates to the home page on successful logout
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   const handleProfileClick = () => {

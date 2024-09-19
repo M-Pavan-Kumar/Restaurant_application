@@ -3,18 +3,19 @@ import axios from 'axios';
 import { Rating } from '@mui/material';
 import { useCart } from './CartContext';  // Importing the custom hook
 
-import '../Css/Page1.css'; 
-// Defininng a default image path
-const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800'; // Replace with the path to your default image
 
-const Page2 = () => {
+import '../Css/Page1.css'; 
+// Defining a default image path
+const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800'; // Replace with the path to your default image
+const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+function Page1() {
   const [items, setItems] = useState([]);
   const { addToCart } = useCart();  // Using the addToCart function
 
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3008/nonvegstarters');
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/nonvegstarters`);
         if (response.data.status === 'success') {
           //console.log(response.data.data); 
           setItems(response.data.data); 
@@ -41,6 +42,15 @@ const Page2 = () => {
   };
 
   const rows = chunkArray(items, 4); //To Split items into rows of four
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/page1-data`);
+      // ... rest of the function ...
+    } catch (error) {
+      // ... error handling ...
+    }
+  };
 
   return (
     <div className='container'>
@@ -78,6 +88,6 @@ const Page2 = () => {
       ))}
     </div>
   );
-};
+}
 
-export default Page2;
+export default Page1;

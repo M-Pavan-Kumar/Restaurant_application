@@ -7,6 +7,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Pages/Footer';
 import { useCart } from './CartContext';
 import { Rating } from '@mui/material';
+const REACT_APP_BACKEND_URL = "https://restaurant-application-4.onrender.com";
 
 const FoodDetails = () => {
   const [items, setItems] = useState([]);
@@ -15,7 +16,8 @@ const FoodDetails = () => {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3008/menuitems');
+        // Use the backend URL from the environment variable
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/menuitems`);
         if (response.data.status === 'success') {
           console.log(response.data.data); 
           setItems(response.data.data); 
@@ -27,6 +29,8 @@ const FoodDetails = () => {
 
     fetchMenuItems();
   }, []);
+
+
 
   if (!Array.isArray(items)) {
     return <p>No items found</p>;
