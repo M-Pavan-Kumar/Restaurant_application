@@ -14,7 +14,7 @@ import logo from '../Images/logo.jpeg';
 import { Link, useNavigate } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useCart } from "../Pages/CartContext"
-const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://restaurant-application-4.onrender.com";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
