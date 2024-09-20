@@ -36,7 +36,7 @@ connectToMongoDB();
 
 app.use(express.json()); 
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: 'https://restaurant-application-ah83.vercel.app/', 
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
