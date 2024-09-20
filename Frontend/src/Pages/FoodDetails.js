@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Pages/Footer';
 import { useCart } from './CartContext';
 import { Rating } from '@mui/material';
-const REACT_APP_BACKEND_URL = "https://restaurant-application-4.onrender.com";
+const REACT_APP_BACKEND_URL = "https://restaurant-application-1-p2q3.onrender.com";
 
 const FoodDetails = () => {
   const [items, setItems] = useState([]);

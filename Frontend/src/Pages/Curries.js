@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Rating } from '@mui/material';
 import { useCart } from './CartContext';
-const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
 
 // Define a default image path
 const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800'; // Replace with the path to your default image
@@ -14,7 +14,7 @@ const Page2 = () => {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/vegcurries`);
+        const response = await axios.get(`${REACT_APP_BACKEND_URL}/vegcurries`);
         if (response.data.status === 'success') {
           console.log(response.data.data); 
           setItems(response.data.data); 

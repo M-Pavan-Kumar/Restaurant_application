@@ -4,7 +4,7 @@ import '../Css/Custumer.css';
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
 
 const Custumer = () => {
   const [reviews, setReviews] = useState([]);

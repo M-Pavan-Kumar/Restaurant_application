@@ -4,7 +4,7 @@ import { Rating } from '@mui/material';
 import { useCart } from './CartContext';  // Import the custom hook
 
 const DEFAULT_IMAGE_PATH = 'https://recipes.timesofindia.com/thumb/53683545.cms?imgsize=283664&width=800&height=800';
-const REACT_APP_BACKEND_URL="https://restaurant-application-4.onrender.com"
+const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
 const Page2 = () => {
   const [items, setItems] = useState([]);
   const { addToCart } = useCart();  // Use the addToCart function
