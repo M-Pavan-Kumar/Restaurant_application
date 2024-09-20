@@ -4,8 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../Css/Addreview.css"
 import { useNavigate } from 'react-router-dom';
-const apiUrl = process.env.REACT_APP_BACKEND_URL;
-const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
+import { base_url } from "../Pages/Urls" 
 
 const Addreview = () => {
   const [name, setName] = useState('');
@@ -27,7 +26,7 @@ const Addreview = () => {
 
     try {
       const response = await axios.post(
-        `${REACT_APP_BACKEND_URL}/addreview`, 
+        `${base_url}/addreview`, 
         {
           // userId,
           name,

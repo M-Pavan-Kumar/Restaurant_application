@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CgWindows } from 'react-icons/cg';
-const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
+import { base_url } from "../Pages/Urls" 
 
 const Sign_in = () => {
     const [username, setUsername] = useState('');
@@ -30,7 +30,7 @@ const Sign_in = () => {
                 address
             };
 
-            const response = await axios.post(`${REACT_APP_BACKEND_URL}/signin`, data, {
+            const response = await axios.post(`${base_url}/signin`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

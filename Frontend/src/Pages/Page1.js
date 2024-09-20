@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Rating } from '@mui/material';
 import { useCart } from './CartContext';  // Importing the custom hook
+import { base_url } from "../Pages/Urls" 
 
 
 import '../Css/Page1.css'; 
@@ -15,7 +16,7 @@ function Page1() {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await axios.get(`${REACT_APP_BACKEND_URL}/nonvegstarters`);
+        const response = await axios.get(`${base_url}/nonvegstarters`);
         if (response.data.status === 'success') {
           //console.log(response.data.data); 
           setItems(response.data.data); 

@@ -1,1 +1,1 @@
-const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
+export const base_url="https://restaurant-application-2.onrender.com"

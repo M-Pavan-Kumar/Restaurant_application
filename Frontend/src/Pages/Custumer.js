@@ -4,7 +4,7 @@ import '../Css/Custumer.css';
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-const REACT_APP_BACKEND_URL="https://restaurant-application-1-p2q3.onrender.com"
+import { base_url } from "../Pages/Urls" 
 
 const Custumer = () => {
   const [reviews, setReviews] = useState([]);
@@ -16,7 +16,7 @@ const Custumer = () => {
     // Function to fetch reviews from the backend
     const fetchReviews = async () => {
       try {
-        const response = await fetch(`${REACT_APP_BACKEND_URL}/reviews`);
+        const response = await fetch(`${base_url}/reviews`);
         const data = await response.json();
 
         if (response.ok) {

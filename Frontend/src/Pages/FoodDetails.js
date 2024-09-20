@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Pages/Footer';
 import { useCart } from './CartContext';
 import { Rating } from '@mui/material';
-const REACT_APP_BACKEND_URL = "https://restaurant-application-1-p2q3.onrender.com";
+import { base_url } from "../Pages/Urls" 
 
 const FoodDetails = () => {
   const [items, setItems] = useState([]);
@@ -17,7 +17,7 @@ const FoodDetails = () => {
     const fetchMenuItems = async () => {
       try {
         // Use the backend URL from the environment variable
-        const response = await axios.get(`${REACT_APP_BACKEND_URL}/menuitems`);
+        const response = await axios.get(`${base_url}/menuitems`);
         if (response.data.status === 'success') {
           console.log(response.data.data); 
           setItems(response.data.data); 
