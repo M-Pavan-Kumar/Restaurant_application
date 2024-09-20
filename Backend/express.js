@@ -1,13 +1,13 @@
 const express = require("express");
-
-require('dotenv').config()
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 app.use(express.json())
 const mongoose = require('mongoose');
 const Review=require("./Reviewmodel")
+require('dotenv').config();
 
+const port = process.env.PORT || 3000;
 // MongoDB Connection URI
 const uri = process.env.Mongo_Url;
 const client = new MongoClient(uri, {
@@ -36,7 +36,7 @@ connectToMongoDB();
 
 app.use(express.json()); 
 app.use(cors({
-  origin: 'https://restaurant-application-ah83.vercel.app/', 
+  origin: 'http://localhost:3000', 
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
@@ -88,7 +88,7 @@ app.use(cors({
 
 
 
-const port = process.env.PORT || 3008;
+
 app.listen(port, () => {
   console.log("Server is running on port 3008");
 
