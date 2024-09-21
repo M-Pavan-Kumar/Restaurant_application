@@ -34,13 +34,24 @@ connectToMongoDB();
 
 
 
-app.use(express.json()); 
+// app.use(express.json()); 
+// app.use(cors({
+//   origin: 'http://localhost:3000', 
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type']
+// }));
+
+
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'https://resapp-9yd2rdwm6-m-pavan-kumars-projects-00c19b9e.vercel.app/'], // Add your Vercel URL here
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type']
+// }));
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: '*', // Allows all origins
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
-
 
 // Cart Item Schema
 // const cartItemSchema = new mongoose.Schema({
